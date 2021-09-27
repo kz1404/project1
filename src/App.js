@@ -26,8 +26,8 @@ function App() {
   }
 
   function addTodo(e) {
-    console.log('you are trying to add a todo');
     e.preventDefault();
+    console.log('you are trying to add a todo');
     db.collection("todos").add({ 
       inprogress: true,
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
@@ -38,21 +38,22 @@ function App() {
   } 
   return (
     <div 
-      className="App" 
-      style={{ 
-        display: "flex", 
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
+      className="App" >
+      <div      
+            style={{ 
+            display: "flex", 
+            flexDirection: "column",
+            justifyContent: "center",
+           alignItems: "center",
       }}
     >
-      <div>
 
         <h1>  Project 1 - interactive list ✔</h1> 
         <form>
           <TextField 
            id="standard-basic" 
             label="Add task" 
+            
             onChange={(e) => {
              setTodoInput(e.target.value);
              console.log('this is the input $(e.target.value)');
@@ -73,7 +74,11 @@ function App() {
 
 
         {todos.map((todo) => (
-          <p>{todo.todo}</p>
+          <TodoListItem 
+          todo={todo.todo} 
+          inprogress={todo.inprogress} 
+          todo={todo.id}
+          />
         ))}
       </div>
     </div>
