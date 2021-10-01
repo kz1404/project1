@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { Button } from '@material-ui/core';
 import { db } from './firebase_config';
 import firebase from "firebase";
+import TodoListItem from "./Todo";
 
 function App() {
   const [todos, setTodos] = useState([]);
@@ -74,10 +75,11 @@ function App() {
 
 
         {todos.map((todo) => (
-          <TodoListItem 
-          todo={todo.todo} 
-          inprogress={todo.inprogress} 
-          todo={todo.id}
+          <TodoListItem
+            id="label" 
+            todo={todo.todo} 
+            inprogress={todo.inprogress} 
+            id={todo.id}
           />
         ))}
       </div>
